@@ -1,4 +1,4 @@
-package com.example.orderservice.exception.define;
+package com.example.inventoryservice.exception.define;
 
 public class ErrorCode {
 

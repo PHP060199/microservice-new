@@ -1,4 +1,4 @@
-package com.example.productservice.exception;
+package com.example.inventoryservice.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
