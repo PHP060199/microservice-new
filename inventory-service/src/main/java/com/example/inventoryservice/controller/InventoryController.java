@@ -15,25 +15,21 @@ public class InventoryController {
     private final InventoryService inventoryService;
 
     @GetMapping
-//    @ResponseStatus(HttpStatus.OK)
     public boolean isInStock(@RequestParam ("code") String code ){
         return inventoryService.isInStock(code);
     }
 
     @GetMapping("/getQuantityBySkuCode")
-//    @ResponseStatus(HttpStatus.OK)
     public Integer getQuantityByCode(@RequestParam("code") String code){
         return inventoryService.getQuantityCode(code);
     }
 
     @PutMapping("/setQuantity")
-//    @ResponseStatus(HttpStatus.OK)
     public void setQuantity(@RequestBody List<Inventory> inventoryList){
         inventoryService.setQuantity(inventoryList);
     }
 
     @GetMapping("/skuCodesValid")
-//    @ResponseStatus(HttpStatus.OK)
     public List<Inventory> getCodesValid(){
         return inventoryService.codesListInStocks();
     }

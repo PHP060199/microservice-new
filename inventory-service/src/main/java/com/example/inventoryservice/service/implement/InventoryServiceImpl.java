@@ -55,7 +55,7 @@ public class InventoryServiceImpl implements InventoryService {
     public Inventory addInventory(Inventory inventory) {
         Inventory inv = inventoryRepository.findByCode(inventory.getCode()).orElse(null);
         if (inv != null) {
-            throw new CustomException(ErrorMessage.INVENTORY_NOT_FOUND, ErrorCode.notFound);
+            throw new CustomException(ErrorMessage.CODE_IS_EXISTS, ErrorCode.exist);
         }
         Inventory newInventory = new Inventory();
         newInventory.setQuantity(inventory.getQuantity());
