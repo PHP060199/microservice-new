@@ -13,6 +13,4 @@ public class InventoryDTO {
     private Long id;
     private String code;
     private Integer quantity;
-    private boolean isInStock;
-
 }

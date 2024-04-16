@@ -14,12 +14,7 @@ public class InventoryController {
 
     private final InventoryService inventoryService;
 
-    @GetMapping
-    public boolean isInStock(@RequestParam ("code") String code ){
-        return inventoryService.isInStock(code);
-    }
-
-    @GetMapping("/getQuantityBySkuCode")
+    @GetMapping("/getQuantityByCode")
     public Integer getQuantityByCode(@RequestParam("code") String code){
         return inventoryService.getQuantityCode(code);
     }
@@ -29,7 +24,7 @@ public class InventoryController {
         inventoryService.setQuantity(inventoryList);
     }
 
-    @GetMapping("/skuCodesValid")
+    @GetMapping("/getCodesValid")
     public List<Inventory> getCodesValid(){
         return inventoryService.codesListInStocks();
     }

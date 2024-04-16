@@ -6,9 +6,6 @@ import com.example.inventoryservice.dto.InventoryDTO;
 import java.util.List;
 
 public interface InventoryService {
-
-    boolean isInStock(String code);
-
     List<Inventory> codesListInStocks();
 
     Integer getQuantityCode(String code);

@@ -7,9 +7,9 @@ import com.example.inventoryservice.exception.define.ErrorCode;
 import com.example.inventoryservice.exception.define.ErrorMessage;
 import com.example.inventoryservice.repository.InventoryRepository;
 import com.example.inventoryservice.service.InventoryService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,12 +18,6 @@ import java.util.List;
 public class InventoryServiceImpl implements InventoryService {
 
     private final InventoryRepository inventoryRepository;
-    @Override
-    @Transactional(readOnly = true)
-    public boolean isInStock(String code) {
-        return inventoryRepository.findByCode(code).isPresent();
-    }
-
     @Override
     public List<Inventory> codesListInStocks() {
         return inventoryRepository.findAllByQuantityGreaterThan(0);
