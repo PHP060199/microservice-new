@@ -52,7 +52,7 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public ProductDTO getProductById(String id) {
+    public ProductDTO getProductById(Long id) {
         Optional<Product> product = productRepository.getProductById(id);
         if (product.isEmpty()) {
             throw new CustomException(ErrorMessage.PRODUCT_NOT_FOUND, ErrorCode.notFound);
@@ -67,7 +67,7 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public ProductDTO deleteProductById(String id) {
+    public ProductDTO deleteProductById(Long id) {
         Optional<Product> product = productRepository.getProductById(id);
         if (product.isEmpty())
             throw new CustomException(ErrorMessage.PRODUCT_NOT_FOUND, ErrorCode.notFound);

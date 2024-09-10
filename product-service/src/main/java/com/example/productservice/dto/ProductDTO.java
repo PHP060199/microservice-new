@@ -6,11 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @AllArgsConstructor
+@Builder
 @NoArgsConstructor
 public class ProductDTO {
-    private String id;
+    private Long id;
     private String name;
     private String description;
     private Float price;
