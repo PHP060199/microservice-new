@@ -1,7 +1,9 @@
 package com.example.identityservice.controller;
 
+import com.example.identityservice.dto.ApiResponse;
 import com.example.identityservice.dto.UserDTO;
 import com.example.identityservice.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,29 +19,39 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDTO createUser(@RequestBody UserDTO userDTO){
-        return userService.createUser(userDTO);
+    public ApiResponse<UserDTO> createUser(@RequestBody @Valid UserDTO userDTO){
+        ApiResponse<UserDTO> apiResponse = new ApiResponse<>();
+        apiResponse.setResult(userService.createUser(userDTO));
+        return apiResponse;
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<UserDTO> getAllUsers(){
-        return userService.getAllUsers();
+    public ApiResponse<List<UserDTO>> getAllUsers(){
+        ApiResponse<List<UserDTO>> apiResponse = new ApiResponse<>();
+        apiResponse.setResult(userService.getAllUsers());
+        return apiResponse;
     }
 
     @GetMapping("/getById")
-    public UserDTO getUserById(@RequestParam Long  userId){
-        return userService.getUserById(userId);
+    public ApiResponse<UserDTO> getUserById(@RequestParam Long  userId){
+        ApiResponse<UserDTO> apiResponse = new ApiResponse<>();
+        apiResponse.setResult(userService.getUserById(userId));
+        return apiResponse;
     }
 
     @PutMapping()
-    public UserDTO updateUser(@RequestParam Long userId, @RequestBody UserDTO userDTO){
-        return userService.updateUser(userId, userDTO);
+    public ApiResponse<UserDTO> updateUser(@RequestParam Long userId, @RequestBody @Valid UserDTO userDTO){
+        ApiResponse<UserDTO> apiResponse = new ApiResponse<>();
+        apiResponse.setResult(userService.updateUser(userId, userDTO));
+        return apiResponse;
     }
 
     @DeleteMapping()
-    String deleteUser(@RequestParam Long userId){
+    public ApiResponse<String> deleteUser(@RequestParam Long userId){
         userService.deleteUser(userId);
-        return "User has been deleted";
+        ApiResponse<String> apiResponse = new ApiResponse<>();
+        apiResponse.setResult("User has been deleted");
+        return apiResponse;
     }
 }

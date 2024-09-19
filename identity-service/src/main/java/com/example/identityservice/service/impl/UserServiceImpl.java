@@ -24,6 +24,11 @@ public class UserServiceImpl  implements UserService {
 
     @Override
     public UserDTO createUser(UserDTO userDTO) {
+
+        if (userRepository.existsByUsername(userDTO.getUsername())) {
+            throw new CustomException(ErrorMessage.USERNAME_ALREADY_EXISTS, ErrorCode.exist);
+        }
+
         User user = User.builder()
                 .username(userDTO.getUsername())
                 .password(userDTO.getPassword())
