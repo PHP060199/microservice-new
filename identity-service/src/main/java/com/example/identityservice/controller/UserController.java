@@ -1,6 +1,6 @@
 package com.example.identityservice.controller;
 
-import com.example.identityservice.dto.ApiResponse;
+import com.example.identityservice.dto.respone.ApiResponse;
 import com.example.identityservice.dto.UserDTO;
 import com.example.identityservice.service.UserService;
 import jakarta.validation.Valid;

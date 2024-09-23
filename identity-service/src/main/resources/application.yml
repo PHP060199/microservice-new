@@ -15,6 +15,9 @@ spring:
 server:
   port: 8088
 
+jwt:
+  signerKey: "YGvocgX6OuERsoVBDzsgvCrgL+Mc/zOlpq5NQJjfUMLUPSnviRxV7VkceAV4G4VF"
+
 #eureka:
 #  client:
 #    serviceUrl:

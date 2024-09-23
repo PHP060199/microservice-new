@@ -10,6 +10,8 @@ import com.example.identityservice.repository.UserRepository;
 import com.example.identityservice.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,11 +33,13 @@ public class UserServiceImpl  implements UserService {
 
         User user = User.builder()
                 .username(userDTO.getUsername())
-                .password(userDTO.getPassword())
                 .firstName(userDTO.getFirstName())
                 .lastName(userDTO.getLastName())
                 .dob(userDTO.getDob())
                 .build();
+
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         userRepository.save(user);
         return userMapper.toUserDTO(user);
     }
@@ -48,12 +52,14 @@ public class UserServiceImpl  implements UserService {
         User updateUser = User.builder()
                 .id(userId)
                 .username(userDTO.getUsername())
-                .password(userDTO.getPassword())
                 .firstName(userDTO.getFirstName())
                 .lastName(userDTO.getLastName())
                 .dob(userDTO.getDob())
                 .build();
 
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+        updateUser.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        userRepository.save(updateUser);
         userRepository.save(updateUser);
         return userMapper.toUserDTO(updateUser);
     }
@@ -72,7 +78,8 @@ public class UserServiceImpl  implements UserService {
 
     @Override
     public UserDTO getUserById(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new CustomException(ErrorMessage.USER_NOT_FOUND, ErrorCode.notFound));
+        User user = userRepository.findById(userId).orElseThrow(() ->
+                new CustomException(ErrorMessage.USER_NOT_FOUND, ErrorCode.notFound));
         return userMapper.toUserDTO(user);
     }
 }
