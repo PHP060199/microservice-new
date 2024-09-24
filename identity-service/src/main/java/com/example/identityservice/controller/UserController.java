@@ -1,7 +1,9 @@
 package com.example.identityservice.controller;
 
+import com.example.identityservice.dto.request.UserCreationRequest;
+import com.example.identityservice.dto.request.UserUpdateRequest;
 import com.example.identityservice.dto.respone.ApiResponse;
-import com.example.identityservice.dto.UserDTO;
+import com.example.identityservice.dto.respone.UserResponse;
 import com.example.identityservice.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -19,32 +21,39 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ApiResponse<UserDTO> createUser(@RequestBody @Valid UserDTO userDTO){
-        ApiResponse<UserDTO> apiResponse = new ApiResponse<>();
-        apiResponse.setResult(userService.createUser(userDTO));
-        return apiResponse;
+    public ApiResponse<UserResponse> createUser(@RequestBody @Valid UserCreationRequest request){
+       return ApiResponse.<UserResponse>builder()
+               .result(userService.createUser(request)).
+               build();
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public ApiResponse<List<UserDTO>> getAllUsers(){
-        ApiResponse<List<UserDTO>> apiResponse = new ApiResponse<>();
-        apiResponse.setResult(userService.getAllUsers());
-        return apiResponse;
+    public ApiResponse<List<UserResponse>> getAllUsers(){
+        return ApiResponse.<List<UserResponse>>builder()
+                .result(userService.getAllUsers())
+                .build();
     }
 
     @GetMapping("/getById")
-    public ApiResponse<UserDTO> getUserById(@RequestParam Long  userId){
-        ApiResponse<UserDTO> apiResponse = new ApiResponse<>();
-        apiResponse.setResult(userService.getUserById(userId));
-        return apiResponse;
+    public ApiResponse<UserResponse> getUserById(@RequestParam Long  userId){
+        return ApiResponse.<UserResponse>builder()
+                .result(userService.getUserById(userId))
+                .build();
+    }
+
+    @GetMapping("/getMyInfo")
+    public ApiResponse<UserResponse> getMyInfo(){
+        return ApiResponse.<UserResponse>builder()
+                .result(userService.getMyInfo())
+                .build();
     }
 
     @PutMapping()
-    public ApiResponse<UserDTO> updateUser(@RequestParam Long userId, @RequestBody @Valid UserDTO userDTO){
-        ApiResponse<UserDTO> apiResponse = new ApiResponse<>();
-        apiResponse.setResult(userService.updateUser(userId, userDTO));
-        return apiResponse;
+    public ApiResponse<UserResponse> updateUser(@RequestParam Long userId, @RequestBody @Valid UserUpdateRequest request){
+        return ApiResponse.<UserResponse>builder()
+                .result(userService.updateUser(userId, request))
+                .build();
     }
 
     @DeleteMapping()

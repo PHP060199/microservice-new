@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -20,4 +21,7 @@ public class User {
     private String firstName;
     private String lastName;
     private LocalDate dob;
+
+    @ManyToMany
+    private Set<Role> roles;
 }
