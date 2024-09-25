@@ -4,6 +4,7 @@ package com.example.identityservice.controller;
 import com.example.identityservice.dto.request.AuthenticationRequest;
 import com.example.identityservice.dto.request.IntrospectRequest;
 import com.example.identityservice.dto.request.LogoutRequest;
+import com.example.identityservice.dto.request.RefreshTokenRequest;
 import com.example.identityservice.dto.respone.ApiResponse;
 import com.example.identityservice.dto.respone.AuthenticationResponse;
 import com.example.identityservice.dto.respone.IntrospectResponse;
@@ -47,6 +48,15 @@ public class AuthenticationController {
             throws JOSEException, ParseException {
         var result = authenticationService.introspect(request);
         return ApiResponse.<IntrospectResponse>builder()
+                .result(result)
+                .build();
+    }
+
+    @PostMapping("/refreshToken")
+    ApiResponse<AuthenticationResponse> refreshToken(@RequestBody RefreshTokenRequest request)
+            throws JOSEException, ParseException {
+        var result = authenticationService.refreshToken(request);
+        return ApiResponse.<AuthenticationResponse>builder()
                 .result(result)
                 .build();
     }

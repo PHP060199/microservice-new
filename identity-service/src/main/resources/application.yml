@@ -17,6 +17,8 @@ server:
 
 jwt:
   signerKey: "YGvocgX6OuERsoVBDzsgvCrgL+Mc/zOlpq5NQJjfUMLUPSnviRxV7VkceAV4G4VF"
+  valid-duration: 1800
+  refreshable-duration: 18000
 
 #eureka:
 #  client:
