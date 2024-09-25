@@ -10,4 +10,5 @@ public class ErrorMessage {
     public static String PERMISSION_ALREADY_EXISTS = "Permission already exists.";
     public static String ROLE_NOT_FOUND = "Role not found.";
     public static String ROLE_ALREADY_EXISTS = "Role already exists.";
+    public static String TOKEN_INVALID = "Token invalid.";
 }
