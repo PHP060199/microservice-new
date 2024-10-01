@@ -20,6 +20,9 @@ public class GatewayConfig {
                 .route(r -> r.path("/api/inventory/**")
                         .uri("lb://inventory-service"))
 
+                .route(r -> r.path("/api/user/**")
+                        .uri("lb://identity-service"))
+
                 .build();
     }
 }
