@@ -1,6 +1,6 @@
 package com.example.identityservice.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,13 +20,15 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
+@AllArgsConstructor
 public class SecurityConfig {
 
-    private final String[] PUBLIC_ENDPOINTS = {"/api/user/registration", "/auth/**"};
+    private static final String[] PUBLIC_ENDPOINTS = {
+            "/api/user/registration"
+            , "/auth/**"};
 
+    private final CustomJwtDecoder customJwtDecoder;
 
-    @Autowired
-    private CustomJwtDecoder customJwtDecoder;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
