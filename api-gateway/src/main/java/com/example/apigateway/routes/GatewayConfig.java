@@ -23,6 +23,9 @@ public class GatewayConfig {
                 .route(r -> r.path("/api/user/**")
                         .uri("lb://identity-service"))
 
+                .route(r -> r.path("/auth/**")
+                        .uri("lb://identity-service"))
+
                 .build();
     }
 }
