@@ -1,8 +1,10 @@
-package com.example.identityservice.exception.define;
+package com.example.common.exception.define;
 
 public class ErrorMessage {
     public static String USER_NOT_FOUND = "User not found.";
     public static String USERNAME_ALREADY_EXISTS = "Username already exists.";
+    public static String PRODUCT_NOT_FOUND = "Product not found.";
+    public static String PRODUCT_ALREADY_EXISTS = "Product name already exists.";
     public static String USERNAME_INVALID = "Username must be at least 3 characters.";
     public static String PASSWORD_INVALID = "Password must be at least 8 characters.";
     public static String UNAUTHENTICATED = "Unauthenticated.";

@@ -1,5 +1,8 @@
 package com.example.identityservice.service;
 
+import com.example.common.exception.CustomException;
+import com.example.common.exception.define.ErrorCode;
+import com.example.common.exception.define.ErrorMessage;
 import com.example.identityservice.domain.InvalidatedToken;
 import com.example.identityservice.domain.User;
 import com.example.identityservice.dto.request.AuthenticationRequest;
@@ -8,9 +11,6 @@ import com.example.identityservice.dto.request.LogoutRequest;
 import com.example.identityservice.dto.request.RefreshTokenRequest;
 import com.example.identityservice.dto.respone.AuthenticationResponse;
 import com.example.identityservice.dto.respone.IntrospectResponse;
-import com.example.identityservice.exception.CustomException;
-import com.example.identityservice.exception.define.ErrorCode;
-import com.example.identityservice.exception.define.ErrorMessage;
 import com.example.identityservice.repository.InvalidatedTokenRepository;
 import com.example.identityservice.repository.UserRepository;
 import com.nimbusds.jose.*;

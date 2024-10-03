@@ -1,4 +1,4 @@
-package com.example.productservice.exception;
+package com.example.common.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

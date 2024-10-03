@@ -1,11 +1,11 @@
 package com.example.identityservice.controller;
 
 
+import com.example.common.dto.respone.ApiResponse;
 import com.example.identityservice.dto.request.AuthenticationRequest;
 import com.example.identityservice.dto.request.IntrospectRequest;
 import com.example.identityservice.dto.request.LogoutRequest;
 import com.example.identityservice.dto.request.RefreshTokenRequest;
-import com.example.identityservice.dto.respone.ApiResponse;
 import com.example.identityservice.dto.respone.AuthenticationResponse;
 import com.example.identityservice.dto.respone.IntrospectResponse;
 import com.example.identityservice.service.AuthenticationService;

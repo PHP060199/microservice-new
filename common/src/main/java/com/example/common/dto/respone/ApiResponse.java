@@ -1,4 +1,4 @@
-package com.example.identityservice.dto.respone;
+package com.example.common.dto.respone;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

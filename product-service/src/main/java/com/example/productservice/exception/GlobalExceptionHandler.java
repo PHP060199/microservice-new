@@ -1,4 +1,4 @@
-package com.example.identityservice.exception;
+package com.example.productservice.exception;
 
 import com.example.common.dto.respone.ApiResponse;
 import com.example.common.exception.CustomException;
