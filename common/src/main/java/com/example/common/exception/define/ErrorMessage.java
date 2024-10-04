@@ -13,4 +13,9 @@ public class ErrorMessage {
     public static String ROLE_NOT_FOUND = "Role not found.";
     public static String ROLE_ALREADY_EXISTS = "Role already exists.";
     public static String TOKEN_INVALID = "Token invalid.";
+    public static String INVENTORY_NOT_FOUND = "Inventory not found.";
+    public static String CODE_ALREADY_EXISTS = "Code already exists.";
+    public static String ORDER_NOT_FOUND = "Order not found.";
+    public static String PRODUCT_NOT_FOUND_IN_STOCK = "Product with code: %s is not found in stock.";
+    public static String PRODUCT_NOT_ENOUGH_QUANTITY = "Product with code: %s is not enough quantity left.";
 }
