@@ -25,6 +25,8 @@ public class GatewayConfig {
 
                 .route(r -> r.path("/auth/**")
                         .uri("lb://identity-service"))
+                .route(r -> r.path("api/notification/**")
+                        .uri("lb://notification-service"))
 
                 .build();
     }
