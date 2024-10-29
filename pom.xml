@@ -17,6 +17,7 @@
         <module>discovery-server</module>
         <module>api-gateway</module>
         <module>identity-service</module>
+        <module>notification-service</module>
     </modules>
 
     <groupId>org.example</groupId>
