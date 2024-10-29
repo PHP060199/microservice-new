@@ -18,4 +18,5 @@ public class ErrorMessage {
     public static String ORDER_NOT_FOUND = "Order not found.";
     public static String PRODUCT_NOT_FOUND_IN_STOCK = "Product with code: %s is not found in stock.";
     public static String PRODUCT_NOT_ENOUGH_QUANTITY = "Product with code: %s is not enough quantity left.";
+    public static String CANNOT_SEND_EMAIL = "Cannot send email.";
 }
