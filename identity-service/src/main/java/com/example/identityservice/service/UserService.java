@@ -3,6 +3,7 @@ package com.example.identityservice.service;
 import com.example.common.exception.CustomException;
 import com.example.common.exception.define.ErrorCode;
 import com.example.common.exception.define.ErrorMessage;
+import com.example.event.dto.NotificationEvent;
 import com.example.identityservice.domain.User;
 import com.example.identityservice.dto.request.UserCreationRequest;
 import com.example.identityservice.dto.request.UserUpdateRequest;
@@ -10,7 +11,10 @@ import com.example.identityservice.dto.respone.UserResponse;
 import com.example.identityservice.mapper.UserMapper;
 import com.example.identityservice.repository.RoleRepository;
 import com.example.identityservice.repository.UserRepository;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,14 +26,19 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class UserService {
-    private final UserRepository userRepository;
+    UserRepository userRepository;
 
-    private final UserMapper userMapper;
+    UserMapper userMapper;
 
-    private final PasswordEncoder passwordEncoder;
+    PasswordEncoder passwordEncoder;
 
-    private final RoleRepository roleRepository;
+    RoleRepository roleRepository;
+
+    KafkaTemplate<String, Object> kafkaTemplate;
+
+
 
     public UserResponse createUser(UserCreationRequest request) {
 
@@ -39,6 +48,16 @@ public class UserService {
 
         User user = userMapper.toUser(request);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+
+        NotificationEvent notificationEvent = NotificationEvent.builder()
+                .channel("EMAIL")
+                .recipient(user.getEmail())
+                .subject("Welcome to identity service")
+                .body("Hello, " + user.getUsername() + "!")
+                .build();
+
+        //Publish message with kafka
+        kafkaTemplate.send("notification-delivery", notificationEvent);
 
         return userMapper.toUserResponse(userRepository.save(user));
     }

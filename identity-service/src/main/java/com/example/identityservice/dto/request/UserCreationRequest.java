@@ -1,5 +1,6 @@
 package com.example.identityservice.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -18,6 +19,8 @@ public class UserCreationRequest {
 
     @Size(min = 8, message = "INVALID_PASSWORD")
     String password;
+    @NotBlank(message = "EMAIL_IS_REQUIRED")
+    String email;
     String firstName;
     String lastName;
     LocalDate dob;

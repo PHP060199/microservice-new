@@ -2,6 +2,7 @@ package com.example.identityservice.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -12,14 +13,17 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String username;
-    private String password;
-    private String firstName;
-    private String lastName;
+    Long id;
+    String username;
+    String password;
+    String email;
+    boolean emailVerified;
+    String firstName;
+    String lastName;
     private LocalDate dob;
 
     @ManyToMany

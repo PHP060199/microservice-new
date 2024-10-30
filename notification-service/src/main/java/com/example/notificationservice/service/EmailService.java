@@ -9,12 +9,12 @@ import com.example.notificationservice.dto.request.EmailRequest;
 import com.example.notificationservice.dto.request.SendEmailRequest;
 import com.example.notificationservice.dto.request.Sender;
 import com.example.notificationservice.dto.respone.EmailResponse;
-import com.mongodb.annotations.Sealed;
-import com.netflix.discovery.provider.Serializer;
 import feign.FeignException;
 import lombok.AccessLevel;
+import org.springframework.beans.factory.annotation.Value;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +26,9 @@ import java.util.List;
 public class EmailService {
     EmailClient emailClient;
 
-    String apiKey = "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";
+    @NonFinal
+    @Value("${notification.email.brevo-apikey}")
+    String apiKey;
 
     public EmailResponse sendEmail(SendEmailRequest request) {
         EmailRequest emailRequest = EmailRequest.builder()
