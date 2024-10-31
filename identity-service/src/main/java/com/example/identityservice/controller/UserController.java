@@ -1,6 +1,7 @@
 package com.example.identityservice.controller;
 
 import com.example.common.dto.respone.ApiResponse;
+import com.example.identityservice.dto.PageResponse;
 import com.example.identityservice.dto.request.UserCreationRequest;
 import com.example.identityservice.dto.request.UserUpdateRequest;
 import com.example.identityservice.dto.respone.UserResponse;
@@ -29,9 +30,12 @@ public class UserController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public ApiResponse<List<UserResponse>> getAllUsers(){
-        return ApiResponse.<List<UserResponse>>builder()
-                .result(userService.getAllUsers())
+    public ApiResponse<PageResponse<UserResponse>> getAllUsers(
+            @RequestParam(required = false, value = "page", defaultValue = "1") int page,
+            @RequestParam(required = false, value = "size", defaultValue = "10") int size
+            ){
+        return ApiResponse.<PageResponse<UserResponse>>builder()
+                .result(userService.getAllUsers(page, size))
                 .build();
     }
 
