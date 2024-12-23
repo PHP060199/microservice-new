@@ -1,4 +1,4 @@
-package com.example.common.exception.define;
+package com.example.identityservice.exception.define;
 
 public class ErrorCode {
 

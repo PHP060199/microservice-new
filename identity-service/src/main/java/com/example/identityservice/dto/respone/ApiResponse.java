@@ -1,4 +1,4 @@
-package com.example.common.dto.respone;
+package com.example.identityservice.dto.respone;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ApiResponse <T> {
+public class ApiResponse<T> {
     @Builder.Default
     private int code = 200;
     private String message;

@@ -1,5 +1,86 @@
-version: "3"
+---
+version: '3.7'
 services:
+#  inventory-service:
+#    image: inventory-service:latest
+#    container_name: inventory-service
+#    depends_on:
+#      - inventory-db
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://inventory-db:3306/inventory-service
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    ports:
+#      - "8081:8080" # Điều chỉnh port theo nhu cầu
+
+  inventory-db:
+    image: mysql:8.0
+    container_name: inventory-service
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: inventory-service
+    ports:
+      - "3307:3306"
+    volumes:
+      - inventory-db-data:/var/lib/mysql
+
+#  order-service:
+#    image: order-service:latest
+#    container_name: order-service
+#    depends_on:
+#      - order-db
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://order-db:3306/order-service
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    ports:
+#      - "8082:8080" # Điều chỉnh port theo nhu cầu
+
+  order-db:
+    image: mysql:8.0
+    container_name: order-service
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: order-service
+    ports:
+      - "3308:3306"
+    volumes:
+      - order-db-data:/var/lib/mysql
+
+#  product-service:
+#    image: product-service:latest
+#    container_name: product-service
+#    depends_on:
+#      - product-db
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://product-db:3306/product-service
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    ports:
+#      - "8083:8080" # Điều chỉnh port theo nhu cầu
+
+  product-db:
+    image: mysql:8.0
+    container_name: product-service
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: product-service
+    ports:
+      - "3309:3306"
+    volumes:
+      - product-db-data:/var/lib/mysql
+
+  identity-db:
+    image: mysql:8.0
+    container_name: identity-service
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: identity-service
+    ports:
+      - "3301:3306"
+    volumes:
+      - identity-db-data:/var/lib/mysql
+
   kafka:
     image: 'bitnami/kafka:3.7.0'
     container_name: kafka
@@ -14,3 +95,10 @@ services:
       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,EXTERNAL://localhost:9094
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT
       - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+
+
+volumes:
+  inventory-db-data:
+  order-db-data:
+  product-db-data:
+  identity-db-data:

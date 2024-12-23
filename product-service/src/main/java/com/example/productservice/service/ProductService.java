@@ -1,18 +1,18 @@
 package com.example.productservice.service;
 
 
-import com.example.common.exception.CustomException;
-import com.example.common.exception.define.ErrorCode;
-import com.example.common.exception.define.ErrorMessage;
+
 import com.example.productservice.domain.Product;
 import com.example.productservice.dto.ProductDTO;
+import com.example.productservice.exception.CustomException;
+import com.example.productservice.exception.define.ErrorCode;
+import com.example.productservice.exception.define.ErrorMessage;
 import com.example.productservice.mapper.ProductMapper;
 import com.example.productservice.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

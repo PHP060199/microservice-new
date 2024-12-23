@@ -1,7 +1,6 @@
 package com.example.inventoryservice.controller;
 
-import com.example.common.dto.respone.ApiResponse;
-import com.example.inventoryservice.domain.Inventory;
+import com.example.inventoryservice.dto.ApiResponse;
 import com.example.inventoryservice.dto.InventoryDTO;
 import com.example.inventoryservice.service.InventoryService;
 import lombok.RequiredArgsConstructor;

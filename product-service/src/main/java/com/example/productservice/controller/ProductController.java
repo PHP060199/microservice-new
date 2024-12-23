@@ -1,6 +1,6 @@
 package com.example.productservice.controller;
 
-import com.example.common.dto.respone.ApiResponse;
+import com.example.productservice.dto.ApiResponse;
 import com.example.productservice.dto.ProductDTO;
 import com.example.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;

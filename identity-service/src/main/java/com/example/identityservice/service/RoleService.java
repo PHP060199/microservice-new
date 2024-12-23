@@ -1,13 +1,13 @@
 package com.example.identityservice.service;
 
 
-import com.example.common.exception.CustomException;
-import com.example.common.exception.define.ErrorCode;
-import com.example.common.exception.define.ErrorMessage;
 import com.example.identityservice.domain.Permission;
 import com.example.identityservice.domain.Role;
 import com.example.identityservice.dto.request.RoleRequest;
 import com.example.identityservice.dto.respone.RoleResponse;
+import com.example.identityservice.exception.CustomException;
+import com.example.identityservice.exception.define.ErrorCode;
+import com.example.identityservice.exception.define.ErrorMessage;
 import com.example.identityservice.mapper.RoleMapper;
 import com.example.identityservice.repository.PermissionRepository;
 import com.example.identityservice.repository.RoleRepository;

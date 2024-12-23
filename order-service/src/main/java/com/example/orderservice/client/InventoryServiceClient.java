@@ -1,8 +1,7 @@
 package com.example.orderservice.client;
 
-import com.example.inventoryservice.domain.Inventory;
 
-import com.example.inventoryservice.dto.InventoryDTO;
+import com.example.orderservice.dto.InventoryDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,7 +17,7 @@ public interface InventoryServiceClient {
     List<InventoryDTO> getInventoryStillInStock();
 
     @PutMapping("/api/inventory/setQuantity")
-    void setQuantity(@RequestBody List<Inventory> inventoryList);
+    void setQuantity(@RequestBody List<InventoryDTO> inventoryDTOList);
 
     @GetMapping("/api/inventory/getQuantityByCode")
     Integer getQuantityByCode(@RequestParam("code") String code);

@@ -1,12 +1,12 @@
 package com.example.inventoryservice.service;
 
 
-import com.example.common.exception.CustomException;
-import com.example.common.exception.define.ErrorCode;
-import com.example.common.exception.define.ErrorMessage;
 import com.example.inventoryservice.domain.Inventory;
 
 import com.example.inventoryservice.dto.InventoryDTO;
+import com.example.inventoryservice.exception.CustomException;
+import com.example.inventoryservice.exception.define.ErrorCode;
+import com.example.inventoryservice.exception.define.ErrorMessage;
 import com.example.inventoryservice.mapper.InventoryMapper;
 import com.example.inventoryservice.repository.InventoryRepository;
 import jakarta.transaction.Transactional;

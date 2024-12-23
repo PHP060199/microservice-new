@@ -1,14 +1,14 @@
 package com.example.orderservice.service;
 
-import com.example.common.exception.CustomException;
-import com.example.common.exception.define.ErrorCode;
-import com.example.common.exception.define.ErrorMessage;
-import com.example.inventoryservice.domain.Inventory;
-import com.example.inventoryservice.dto.InventoryDTO;
+
 import com.example.orderservice.client.InventoryServiceClient;
 import com.example.orderservice.domain.Order;
+import com.example.orderservice.dto.InventoryDTO;
 import com.example.orderservice.dto.OrderDTO;
 import com.example.orderservice.dto.OrderLineItemsDTO;
+import com.example.orderservice.exception.CustomException;
+import com.example.orderservice.exception.define.ErrorCode;
+import com.example.orderservice.exception.define.ErrorMessage;
 import com.example.orderservice.mapper.OrderMapper;
 import com.example.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -40,7 +40,7 @@ public class OrderService {
         List<String> codes = inventoryStillInStock.stream().map(InventoryDTO::getCode).toList();
 
         //List update quantity of inventory
-        List<Inventory> updateList = new ArrayList<>();
+        List<InventoryDTO> updateList = new ArrayList<>();
 
         orderLineItemsDTOList.forEach(orderLineItemsDTO -> {
 
@@ -58,10 +58,10 @@ public class OrderService {
                         ErrorCode.mismatch);
             }
 
-            Inventory inventory = new Inventory();
-            inventory.setCode(orderLineItemsDTO.getCode());
-            inventory.setQuantity(stockQuantity - orderQuantity);
-            updateList.add(inventory);
+            InventoryDTO inventoryDTO = new InventoryDTO();
+            inventoryDTO.setCode(orderLineItemsDTO.getCode());
+            inventoryDTO.setQuantity(stockQuantity - orderQuantity);
+            updateList.add(inventoryDTO);
         });
 
         //Reset quantity

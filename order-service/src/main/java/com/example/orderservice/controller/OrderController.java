@@ -1,6 +1,6 @@
 package com.example.orderservice.controller;
 
-import com.example.common.dto.respone.ApiResponse;
+import com.example.orderservice.dto.ApiResponse;
 import com.example.orderservice.dto.OrderDTO;
 import com.example.orderservice.service.OrderService;
 import lombok.RequiredArgsConstructor;

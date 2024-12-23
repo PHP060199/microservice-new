@@ -1,17 +1,16 @@
 package com.example.identityservice.controller;
 
-import com.example.common.dto.respone.ApiResponse;
+
 import com.example.identityservice.dto.PageResponse;
 import com.example.identityservice.dto.request.UserCreationRequest;
 import com.example.identityservice.dto.request.UserUpdateRequest;
+import com.example.identityservice.dto.respone.ApiResponse;
 import com.example.identityservice.dto.respone.UserResponse;
 import com.example.identityservice.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")

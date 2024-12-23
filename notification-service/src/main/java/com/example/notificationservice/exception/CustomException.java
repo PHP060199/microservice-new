@@ -1,4 +1,4 @@
-package com.example.common.exception;
+package com.example.notificationservice.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

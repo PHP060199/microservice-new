@@ -1,9 +1,8 @@
 package com.example.inventoryservice.exception;
 
 
-import com.example.common.dto.respone.ApiResponse;
-import com.example.common.exception.CustomException;
-import com.example.common.exception.define.ErrorCode;
+import com.example.inventoryservice.dto.ApiResponse;
+import com.example.inventoryservice.exception.define.ErrorCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

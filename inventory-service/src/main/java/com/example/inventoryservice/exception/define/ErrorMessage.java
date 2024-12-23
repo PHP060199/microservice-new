@@ -1,4 +1,4 @@
-package com.example.common.exception.define;
+package com.example.inventoryservice.exception.define;
 
 public class ErrorMessage {
     public static String USER_NOT_FOUND = "User not found.";

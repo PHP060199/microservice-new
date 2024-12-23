@@ -1,14 +1,13 @@
 package com.example.notificationservice.service;
 
-
-import com.example.common.exception.CustomException;
-import com.example.common.exception.define.ErrorCode;
-import com.example.common.exception.define.ErrorMessage;
 import com.example.notificationservice.client.EmailClient;
 import com.example.notificationservice.dto.request.EmailRequest;
 import com.example.notificationservice.dto.request.SendEmailRequest;
 import com.example.notificationservice.dto.request.Sender;
 import com.example.notificationservice.dto.respone.EmailResponse;
+import com.example.notificationservice.exception.CustomException;
+import com.example.notificationservice.exception.define.ErrorCode;
+import com.example.notificationservice.exception.define.ErrorMessage;
 import feign.FeignException;
 import lombok.AccessLevel;
 import org.springframework.beans.factory.annotation.Value;

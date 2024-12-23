@@ -1,8 +1,9 @@
 package com.example.identityservice.controller;
 
 
-import com.example.common.dto.respone.ApiResponse;
+
 import com.example.identityservice.dto.PermissionDTO;
+import com.example.identityservice.dto.respone.ApiResponse;
 import com.example.identityservice.service.PermissionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
