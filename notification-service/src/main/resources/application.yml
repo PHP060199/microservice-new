@@ -7,7 +7,7 @@ spring:
     name: notification-service
   data:
     mongodb:
-      uri: mongodb://root:root@localhost:27017/notification-service?authSource=admin
+      uri: ${MONGODB_CONNECTION}
   kafka:
     bootstrap-servers: localhost:9094
     consumer:
@@ -21,4 +21,4 @@ spring:
 notification:
   email:
     brevo-url: https://api.brevo.com
-    brevo-apikey: "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"
+    brevo-apikey: ${BREVO_KEY}
