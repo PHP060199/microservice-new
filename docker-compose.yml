@@ -46,6 +46,19 @@ services:
     volumes:
       - identity-db-data:/var/lib/mysql
 
+  mongodb:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: file-service
+    volumes:
+      - mongo-data:/data/db
+
+
   kafka:
     image: 'bitnami/kafka:3.7.0'
     container_name: kafka
@@ -67,3 +80,4 @@ volumes:
   order-db-data:
   product-db-data:
   identity-db-data:
+  mongo-data:
