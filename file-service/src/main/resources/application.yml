@@ -1,0 +1,15 @@
+server:
+  port: 8087
+  servlet:
+    context-path: /api/file
+spring:
+  application:
+    name: file-service
+  data:
+    mongodb:
+      uri: mongodb://root:root@localhost:27017/file-service?authSource=admin
+
+app:
+  file:
+    storage-dir: D:/upload/
+    download-prefix: http://localhost:9999/api/file/media/
